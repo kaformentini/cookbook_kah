@@ -1,0 +1,7 @@
+<h1> Registrando Tipo de Receita </h1>
+
+<%= form_for @recipe_type do |f| %>
+    <%= f.label :name, "Tipo" %>
+    <%= f.text_field :name %>
+    <%= f.submit "Enviar" %>
+<% end %>

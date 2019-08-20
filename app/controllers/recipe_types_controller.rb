@@ -1,14 +1,23 @@
 class RecipeTypesController < ApplicationController
     def show
-        @recipe_type = RecipeTypes.find(params[:id])
+        @recipe_type = RecipeType.find(params[:id])
     end
 
     def new
-        @recipe_type = RecipeTypes.new
+        @recipe_type = RecipeType.new
     end
 
     def create
-   
+        @recipe_type = RecipeType.new(params_recipe_type)
+        
+        if @recipe_type.save
+          flash[:allert] = 'Regitro efetuado com sucesso!'
+          redirect_to @recipe_type
+        else
+          flash.now[:error] = "Erro, tente novamente"
+          render :new
+        end
+
 
     end
 
@@ -16,7 +25,7 @@ class RecipeTypesController < ApplicationController
 private
 
     def params_recipe_type
-        params.require(:recipe_tipe).permit(:name)
+        params.require(:recipe_type).permit(:name)
     end
 
 end
