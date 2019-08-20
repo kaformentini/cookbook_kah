@@ -26,6 +26,20 @@ feature 'Admin register new recipe type' do
 
     end 
 
+    scenario 'recipe type has to be unique' do
+        recipe_type = RecipeType.create(name: 'Sobremesa')
+       
+        visit root_path
+        click_on 'Registrar Tipo de Receita'
+
+        fill_in 'Tipo', with: 'Sobremesa'
+        click_on 'Enviar'
+
+        expect(page).to have_content('Tipo de receita já cadastrado')
+
+    end
+
+
 
 end
 
