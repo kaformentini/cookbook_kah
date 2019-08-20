@@ -14,7 +14,7 @@ class RecipeTypesController < ApplicationController
           flash[:allert] = 'Regitro efetuado com sucesso!'
           redirect_to @recipe_type
         else
-          flash.now[:error] = "Erro, tente novamente"
+          flash.now[:error] = "Você deve preencher o campo TIPO"
           render :new
         end
 
