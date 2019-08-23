@@ -1,5 +1,5 @@
 class RecipeType < ApplicationRecord
-    validates :name, presence: true
-    validates :name, uniqueness: {massage: 'Tipo de receita já cadastrado'}
+    validates :name, presence: {message: 'Você deve preencher o campo TIPO'}
+    validates :name, uniqueness: { message: 'Tipo de receita já cadastrado'}
 has_many :recipes
 end

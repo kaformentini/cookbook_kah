@@ -1,7 +1,11 @@
 <h1> Registrando Tipo de Receita </h1>
 
+<% @recipe_type.errors.full_messages.each do |message| %>
+    <p> <%= message %> </p>
+<%end%>
+    
 <%= form_for @recipe_type do |f| %>
-    <%= f.label :name, "Tipo" %>
-    <%= f.text_field :name %>
-    <%= f.submit "Enviar" %>
+<%= f.label :name, "Tipo" %>
+<%= f.text_field :name %>
+<%= f.submit "Enviar" %>
 <% end %>
