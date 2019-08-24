@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_action :recipe_type_all, only: %i[ new create edit ]
+  before_action :cuisine_all, only: %i[ new create edit ]
 
   def index
     @recipes = Recipe.all
@@ -20,6 +21,7 @@ class RecipesController < ApplicationController
       redirect_to @recipe
     else
       recipe_type_all
+      cuisine_all
       flash.now[:error] = "Você deve informar todos os dados da receita"
       render :new
     end
@@ -43,12 +45,14 @@ class RecipesController < ApplicationController
 private
 
   def params_recipe
-    params.require(:recipe).permit(:title, :recipe_type_id, :cuisine, :difficulty, :cook_time, :difficulty, :ingredients, :cook_method)
+    params.require(:recipe).permit(:title, :recipe_type_id, :cuisine_id, :difficulty, :cook_time, :difficulty, :ingredients, :cook_method)
   end
 
   def recipe_type_all
     @recipe_type = RecipeType.all
   end
 
-
+  def cuisine_all
+    @cuisine = Cuisine.all
+  end
 end

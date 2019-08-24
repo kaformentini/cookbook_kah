@@ -27,7 +27,7 @@ feature 'Admin register new recipe type' do
     end 
 
     scenario 'recipe type has to be unique' do
-        recipe_type = RecipeType.create(name: 'Sobremesa')
+        recipe_type = RecipeType.create!(name: 'Sobremesa')
        
         visit root_path
         click_on 'Registrar Tipo de Receita'

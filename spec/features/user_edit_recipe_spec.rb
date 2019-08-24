@@ -2,10 +2,12 @@ require 'rails_helper'
 
 feature 'User update recipe' do
   scenario 'successfully' do
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    RecipeType.create(name: 'Entrada')
-    Recipe.create(title: 'Bolodecenoura', difficulty: 'Médio',
-                  recipe_type: recipe_type, cuisine: 'Brasileira',
+    recipe_type = RecipeType.create!(name: 'Sobremesa')
+    RecipeType.create!(name: 'Entrada')
+    cuisine = Cuisine.create!(cuisine_name: 'Brasileira')
+    Cuisine.create!(cuisine_name: 'De Casa')
+    Recipe.create!(title: 'Bolodecenoura', difficulty: 'Médio',
+                  recipe_type: recipe_type, cuisine: cuisine,
                   cook_time: 50, ingredients: 'Farinha, açucar, cenoura',
                   cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
 
@@ -16,6 +18,7 @@ feature 'User update recipe' do
 
     fill_in 'Título', with: 'Bolo de cenoura'
     select 'Entrada', from: 'Tipo da Receita'
+    select 'De Casa', from: 'Cozinha'
     fill_in 'Dificuldade', with: 'Médio'
     fill_in 'Tempo de Preparo', with: '45'
     fill_in 'Ingredientes', with: 'Cenoura, farinha, ovo, oleo de soja e chocolate'
@@ -32,9 +35,10 @@ feature 'User update recipe' do
   end
 
   scenario 'and must fill in all fields' do
-    recipe_type = RecipeType.create(name: 'Sobremesa')
-    Recipe.create(title: 'Bolodecenoura', difficulty: 'Médio',
-                  recipe_type: recipe_type, cuisine: 'Brasileira',
+    recipe_type = RecipeType.create!(name: 'Sobremesa')
+    cuisine = Cuisine.create!(cuisine_name: 'Brasileira')
+    Recipe.create!(title: 'Bolodecenoura', difficulty: 'Médio',
+                  recipe_type: recipe_type, cuisine: cuisine,
                   cook_time: 50, ingredients: 'Farinha, açucar, cenoura',
                   cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
 
@@ -44,7 +48,6 @@ feature 'User update recipe' do
     click_on 'Editar'
 
     fill_in 'Título', with: ''
-    fill_in 'Cozinha', with: ''
     fill_in 'Dificuldade', with: ''
     fill_in 'Tempo de Preparo', with: ''
     fill_in 'Ingredientes', with: ''
