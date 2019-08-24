@@ -13,6 +13,14 @@
     <%= flash[:error] %>
     <%= flash[:alert] %>
 
+    <%= form_tag(search_path, method:  :get) do %>
+      <%= label_tag(:search_title, "Buscar por:") %>
+      <%= text_field_tag(:search_title) %>
+      <%= submit_tag("Buscar") %>
+    <% end %>
+
+
+
     <%= yield %>
   </body>
 </html>
