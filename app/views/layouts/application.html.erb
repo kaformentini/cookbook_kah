@@ -12,12 +12,21 @@
   <body>
     <%= flash[:error] %>
     <%= flash[:alert] %>
+    <%= flash[:notice] %>
+
+  <nav>
+    <h2> CookBook </h2>
 
     <%= form_tag(search_path, method:  :get) do %>
       <%= label_tag(:search_title, "Buscar por:") %>
       <%= text_field_tag(:search_title) %>
       <%= submit_tag("Buscar") %>
     <% end %>
+
+  <%= link_to 'Login', aksdnasdn_path %>
+  
+  </nav>
+
 
 
 
