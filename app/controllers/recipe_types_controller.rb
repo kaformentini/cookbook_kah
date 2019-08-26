@@ -1,5 +1,9 @@
 class RecipeTypesController < ApplicationController
     
+    def index
+        @recipe_types = RecipeType.all
+    end
+
     def show
         @recipe_type = RecipeType.find(params[:id])
     end

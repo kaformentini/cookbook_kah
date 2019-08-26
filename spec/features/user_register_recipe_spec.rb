@@ -8,8 +8,17 @@ feature 'User register recipe' do
     Cuisine.create(cuisine_name: 'Brasileira')
     Cuisine.create(cuisine_name: 'Arabe')
 
+    user = User.create!(email: 'email@email.com', password: '123456')
+
+        visit root_path
+        click_on "Iniciar sessão"
+        
+            fill_in "Email", with: user.email
+            fill_in "Password", with: '123456'
+            click_on "Entrar"
+
     # simula a ação do usuário
-    visit root_path
+    #visit root_path
     click_on 'Enviar uma receita'
 
     fill_in 'Título', with: 'Tabule'
@@ -36,7 +45,16 @@ feature 'User register recipe' do
   end
 
   scenario 'and must fill in all fields' do
+    user = User.create!(email: 'email@email.com', password: '123456')
+    
     # simula a ação do usuário
+    visit root_path
+    click_on "Iniciar sessão"
+    
+        fill_in "Email", with: user.email
+        fill_in "Password", with: '123456'
+        click_on "Entrar"
+
     visit root_path
     click_on 'Enviar uma receita'
 
