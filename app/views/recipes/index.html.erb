@@ -7,6 +7,7 @@ CookBook
 
 <% @recipes.each do |recipe| %>
   <h1><%= link_to recipe.title, recipe %></h1>
+  <%= image_tag(recipe.image_recipe) if recipe.image_recipe.attached?%>
   <ul>
     <li><%= recipe.recipe_type.name %></li>
     <li><%= recipe.cuisine.cuisine_name %></li>
