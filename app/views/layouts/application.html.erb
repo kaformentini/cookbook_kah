@@ -25,7 +25,7 @@
 
     <%= link_to 'Inicio', root_path %>
     <%#= link_to 'Minhas Receitas', new_user_session_path %>
-    <%= link_to 'Cadastrar Receita', new_recipe_path %>
+    
 
     <% if user_signed_in? %>
       Olá <%= current_user.email %>
@@ -33,6 +33,7 @@
       <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to 'Iniciar sessão', new_user_session_path %>
+      <%= link_to 'Registrar-se', new_user_registration_path %>>
     <% end %>
 
   </nav>

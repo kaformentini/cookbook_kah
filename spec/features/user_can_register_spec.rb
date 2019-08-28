@@ -42,5 +42,26 @@ feature 'User can register' do
 
     end
 
+    scenario 'and can do his firs register' do
+        
+        visit root_path
+        click_on "Registrar-se"
+
+        #within('form') do
+
+            fill_in "Email", with: "email@email.com"
+            fill_in "Password", with: '123456'
+            fill_in "Password confirmation", with: '123456'
+            click_on "Registrar"
+
+    
+       # end
+
+        expect(current_path).to eq(root_path)
+        expect(page).to have_content("Enviar uma receita")
+        expect(page).to have_content("Sair")
+
+    end
+
 
 end

@@ -1,4 +1,12 @@
 <h1><%= @recipe.title %></h1>
+<p> 
+<%# if @recipe.image_recipe.attached? %>
+    <%# @recipe.image_recipe.each do |i| %>
+    <%# if @recipe.image_recipe.attached? %>
+        <%#= image_tag images%>
+    <%# end %>
+<%#end%>
+</p>
 <p><%= image_tag(@recipe.image_recipe) if @recipe.image_recipe.attached?%></p>
 
 <h3>Detalhes</h3>

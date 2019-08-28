@@ -14,31 +14,30 @@ feature 'Admin register new cuisine' do
         expect(page).to have_content('Brasileira')
     end
 
-    pending 
-
-    scenario 'recipe type is required' do
+    
+    scenario 'cuisine is required' do
 
         visit root_path
-        click_on 'Registrar Tipo de Receita'
+        click_on 'Registrar Tipo de Cozinha'
 
         fill_in 'Tipo', with: ''
         click_on 'Enviar'
 
-        expect(page).to have_content('Você deve preencher o campo TIPO')
+        expect(page).to have_content('Você deve preencher todos os campos')
 
     end 
 
-    pending
-    scenario 'recipe type has to be unique' do
-        recipe_type = RecipeType.create(name: 'Sobremesa')
+    
+    scenario 'cuisine has to be unique' do
+        cuisine = Cuisine.create(cuisine_name: 'BR')
        
         visit root_path
-        click_on 'Registrar Tipo de Receita'
+        click_on 'Registrar Tipo de Cozinha'
 
-        fill_in 'Tipo', with: 'Sobremesa'
+        fill_in 'Tipo', with: 'BR'
         click_on 'Enviar'
 
-        expect(page).to have_content('Tipo de receita já cadastrado')
+        expect(page).to have_content('Tipo de cozinha já cadastrado')
 
     end
 

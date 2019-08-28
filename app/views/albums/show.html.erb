@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @album.title %>
+</p>
+
+<p>
+  <strong>Recipe:</strong>
+  <%= @album.recipe %>
+</p>
+
+<p> 
+<% @album.images.each do |i| %>
+  <%= <%= image_tag images%>
+<% end %>
+</p>
+
+<%= link_to 'Edit', edit_album_path(@album) %> |
+<%= link_to 'Back', albums_path %>
