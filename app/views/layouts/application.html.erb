@@ -14,40 +14,60 @@
     <%= flash[:alert] %>
     <%= flash[:notice] %>
 
-  <nav>
-    <h1> <%= link_to 'CookBook', root_path %> </h1>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to 'CookBook', root_path, class: "navbar-brand" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <%= form_tag(search_path, method:  :get) do %>
-      <%= label_tag(:search_title, "Buscar por:") %>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to 'Inicio', root_path, class: 'nav-link active' %>
+      </li>
+      <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to 'Enviar uma receita', new_recipe_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+      </li>
+      <% else %>
+      <li class="nav-item">
+        <%= link_to 'Iniciar sessão', new_user_session_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Registrar-se', new_user_registration_path, class: 'nav-link' %>
+      </li>
+      <% end %>
+    </ul>
+    <%= form_tag(search_path, method:  :get, class: "form-inline my-2 my-lg-0") do %>
+      <%= label_tag(:search_title, "Buscar por: ") %>
       <%= text_field_tag(:search_title) %>
-      <%= submit_tag("Buscar") %>
+      <%= submit_tag("Buscar", class: "btn btn-outline-secondary my-2 my-sm-0") %>
     <% end %>
+  </div>
+</nav>
 
-    <%= link_to 'Inicio', root_path %>
-    <%#= link_to 'Minhas Receitas', new_user_session_path %>
-    
-
-    <% if user_signed_in? %>
-      Olá <%= current_user.email %>
-      <%= link_to 'Enviar uma receita', new_recipe_path %>
-      <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Iniciar sessão', new_user_session_path %>
-      <%= link_to 'Registrar-se', new_user_registration_path %>>
-    <% end %>
-
-  </nav>
-    Tipos de Receitas
+<div class="container">
+  
+  <div class="row">
+    <div class="col-2">
+    <p>Tipos de Receitas</p>
+    <br />
+    <p>Tipos de Cozinha</p>
+    <br />
     <%# @recipe_types.each do |type| %>
-      <%#= link_to type.recipe_type.name %>
-      <ul>
-        <li><%#= type.recipe_type.name %></li>
-      </ul> 
-    <%#end%>
+    
+    
+    </div>
+    <div class="col-10"><%= yield %></div>
+  </div>
+</div>
 
 
-
-
-    <%= yield %>
+    <%#= link_to 'Inicio', root_path, class: 'nav-link active' %>
+    <%#= link_to 'Minhas Receitas', new_user_session_path %>
+    <%#= yield %>
   </body>
 </html>

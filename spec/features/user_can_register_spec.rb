@@ -15,7 +15,6 @@ feature 'User can register' do
        # end
 
         expect(current_path).to eq(root_path)
-        expect(page).to have_content("Olá email@email.com")
         expect(page).not_to have_content("Entrar")
         expect(page).to have_content("Sair")
 
