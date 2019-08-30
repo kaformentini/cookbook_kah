@@ -41,10 +41,12 @@
       </li>
       <% end %>
     </ul>
-    <%= form_tag(search_path, method:  :get, class: "form-inline my-2 my-lg-0") do %>
-      <%= label_tag(:search_title, "Buscar por: ") %>
-      <%= text_field_tag(:search_title) %>
-      <%= submit_tag("Buscar", class: "btn btn-outline-secondary my-2 my-sm-0") %>
+       
+
+      <%= form_tag(search_path, method:  :get, class: "form-inline my-2 my-lg-0") do %>
+        <%= label_tag(:search_title) %>
+        <%= text_field_tag(:search_title) %>
+        <%= submit_tag("Buscar", class: "btn btn-sm btn-outline-secondary") %>
     <% end %>
   </div>
 </nav>
@@ -61,7 +63,23 @@
     
     
     </div>
-    <div class="col-10"><%= yield %></div>
+    <div class="col-10">
+      
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+<div class="p-3 mb-2 bg-dark text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="text-center">
+        
+  CookBook 2019
+        </p>
+      </div>
+    </div>
   </div>
 </div>
 

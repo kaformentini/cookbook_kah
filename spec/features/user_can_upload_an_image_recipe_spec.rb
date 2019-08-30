@@ -35,8 +35,10 @@ feature "User can upload an image to the recipe" do
 
         recipe_type = RecipeType.create!(name: 'Sobremesa')
         cuisine = Cuisine.create!(cuisine_name: 'Brasileira')
+        user = User.create!(email: 'email@email.com', password: '123456')
+        
         Recipe.create!(title: 'Bolodecenoura', difficulty: 'Médio',
-                        recipe_type: recipe_type, cuisine: cuisine,
+                        recipe_type: recipe_type, cuisine: cuisine, user: user,
                         cook_time: 50, ingredients: 'Farinha, açucar, cenoura',
                         cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
     
@@ -52,12 +54,14 @@ feature "User can upload an image to the recipe" do
 
         recipe_type = RecipeType.create!(name: 'Sobremesa')
         cuisine = Cuisine.create!(cuisine_name: 'Brasileira')
+        user = User.create!(email: 'email@email.com', password: '123456')
+        
         Recipe.create!(title: 'Bolodecenoura', difficulty: 'Médio',
-                        recipe_type: recipe_type, cuisine: cuisine,
+                        recipe_type: recipe_type, cuisine: cuisine, user: user,
                         cook_time: 50, ingredients: 'Farinha, açucar, cenoura',
                         cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
     
-        user = User.create!(email: 'email@email.com', password: '123456')
+        
 
         visit root_path
         click_on "Iniciar sessão"

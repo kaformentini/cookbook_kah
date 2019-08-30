@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Admin register new recipe type' do
     scenario 'successfully' do
-        
+        user = User.create!(email: 'email@email.com', password: '123456')        
 
         visit root_path
         click_on 'Registrar Tipo de Receita'
@@ -16,6 +16,8 @@ feature 'Admin register new recipe type' do
 
     scenario 'recipe type is required' do
 
+        user = User.create!(email: 'email@email.com', password: '123456')
+
         visit root_path
         click_on 'Registrar Tipo de Receita'
 
@@ -28,6 +30,8 @@ feature 'Admin register new recipe type' do
 
     scenario 'recipe type has to be unique' do
         recipe_type = RecipeType.create!(name: 'Sobremesa')
+        user = User.create!(email: 'email@email.com', password: '123456')
+        
        
         visit root_path
         click_on 'Registrar Tipo de Receita'

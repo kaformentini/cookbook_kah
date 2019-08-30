@@ -1,20 +1,30 @@
 <h1> <%= "Editar receita" %> </h1>
 
 <%= form_for @recipe do |f| %>
-    <%= f.label :title, 'Título' %>
+    <%= f.label :title %>
     <%= f.text_field :title %>
-    <%= f.label :recipe_type_id, 'Tipo da Receita' %>
+    <br>
+    <%= f.label :image_recipe %>
+    <%= f.file_field :image_recipe, multiple: true %>
+    <br>
+    <%= f.label :recipe_type_id %>
     <%= f.collection_select(:recipe_type_id, @recipe_type, :id, :name) %>
-    <%= f.label :cuisine_id, 'Cozinha' %>
+    <br>
+    <%= f.label :cuisine_id%>
     <%= f.collection_select(:cuisine_id, Cuisine.all, :id, :cuisine_name) %>
-    <%= f.label :difficulty, 'Dificuldade' %>
+    <br>
+    <%= f.label :difficulty %>
     <%= f.text_field :difficulty %>
-    <%= f.label :cook_time, 'Tempo de Preparo' %>
+    <br>
+    <%= f.label :cook_time %>
     <%= f.text_field :cook_time %>
-    <%= f.label :ingredients, 'Ingredientes' %>
+    <br>
+    <%= f.label :ingredients %>
     <%= f.text_field :ingredients %>
-    <%= f.label :cook_method, 'Como Preparar' %>
+    <br>
+    <%= f.label :cook_method %>
     <%= f.text_field :cook_method %>
-    <%= f.submit 'Enviar' %>
+    <br>
+    <%= submit_tag("Enviar", class: "btn btn-dark") %>
     
 <% end %>

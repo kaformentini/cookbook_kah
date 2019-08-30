@@ -8,6 +8,9 @@
 <%#end%>
 </p>
 <p><%= image_tag(@recipe.image_recipe) if @recipe.image_recipe.attached?%></p>
+<br>
+<p><%= t :recipe_send_by %> <%= @recipe.user.email %></p>
+<br>
 
 <h3>Detalhes</h3>
 

@@ -1,0 +1,23 @@
+pt-BR:
+  activerecord:
+    models:
+      album: Álbum
+      cuisine: Cozinha
+      recipe_type: Tipo de Receita
+      recipe: Receita
+    attributes:
+      album: 
+        title: Título
+      cuisine:
+        cuisine_name: Tipo de Cozinha
+      recipe_type:
+        name: Nome
+      recipe:
+        title: Título
+        cuisine_id: Cozinha
+        difficulty: Dificuldade
+        cook_time: Tempo de Preparo
+        ingredients: Ingredientes
+        cook_method: Como Preparar
+        recipe_type_id: Tipo da Receita
+        image_recipe: Imagem da Receita

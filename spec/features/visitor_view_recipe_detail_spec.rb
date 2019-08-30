@@ -7,10 +7,10 @@ feature 'Visitor view recipe details' do
   
     cuisine = Cuisine.create(cuisine_name: 'Arabe')
     
-
+    user = User.create!(email: 'email@email.com', password: '123456')
     
     recipe = Recipe.create!(title: 'Bolo de cenoura', recipe_type: recipe_type,
-                           cuisine: cuisine, difficulty: 'Médio',
+                           cuisine: cuisine, difficulty: 'Médio', user: user,
                            cook_time: 60,
                            ingredients: 'Farinha, açucar, cenoura',
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
@@ -36,8 +36,9 @@ feature 'Visitor view recipe details' do
     #cria os dados necessários
     recipe_type = RecipeType.create!(name: 'Sobremesa')
     cuisine = Cuisine.create!(cuisine_name: 'Brasileira')
+    user = User.create!(email: 'email@email.com', password: '123456')
     recipe = Recipe.create!(title: 'Bolo de cenoura', recipe_type: recipe_type,
-                           cuisine: cuisine, difficulty: 'Médio',
+                           cuisine: cuisine, difficulty: 'Médio', user: user,
                            cook_time: 60,
                            ingredients: 'Farinha, açucar, cenoura',
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')

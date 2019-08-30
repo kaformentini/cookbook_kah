@@ -67,4 +67,22 @@ feature 'User register recipe' do
 
     expect(page).to have_content('Você deve informar todos os dados da receita')
   end
+
+  scenario 'and recipe need to belongs to a user' do
+    recipe_type = RecipeType.create(name: 'Sobremesa')
+    cuisine = Cuisine.create(cuisine_name: 'Brasileira')
+
+    user = User.create!(email: 'email@email.com', password: '123456')
+
+    Recipe.create!(title: 'Bolo de Cenoura', difficulty: 'Médio',
+                  recipe_type: recipe_type, cuisine: cuisine, user: user,
+                  cook_time: 50, ingredients: 'Farinha, açucar, cenoura',
+                  cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
+
+
+    visit root_path
+    click_on "Bolo de Cenoura"
+
+    expect(page).to have_content("Receita de #{user.email}")
+  end
 end

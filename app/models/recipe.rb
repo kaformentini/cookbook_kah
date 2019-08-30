@@ -3,6 +3,7 @@ class Recipe < ApplicationRecord
 
   belongs_to :recipe_type
   belongs_to :cuisine
+  belongs_to :user
   has_one_attached :image_recipe
 
   def cook_time_min
