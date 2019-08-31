@@ -15,6 +15,13 @@ feature 'User update recipe' do
 
     # simula a ação do usuário
     visit root_path
+
+    click_on "Iniciar sessão"
+    
+    fill_in "Email", with: user.email
+    fill_in "Password", with: '123456'
+    click_on "Entrar"
+
     click_on 'Bolodecenoura'
     click_on 'Editar'
 
@@ -49,6 +56,13 @@ feature 'User update recipe' do
 
     # simula a ação do usuário
     visit root_path
+
+    click_on "Iniciar sessão"
+    
+    fill_in "Email", with: user.email
+    fill_in "Password", with: '123456'
+    click_on "Entrar"
+
     click_on 'Bolodecenoura'
     click_on 'Editar'
 

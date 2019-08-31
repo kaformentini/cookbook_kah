@@ -85,4 +85,13 @@ feature 'User register recipe' do
 
     expect(page).to have_content("Receita de #{user.email}")
   end
+
+  scenario 'and cant access the link directly' do
+    recipe_type = RecipeType.create!(name: 'Sobremesa')
+    cuisine = Cuisine.create!(cuisine_name: 'Brasileira')
+
+    visit new_recipe_path
+  
+    expect(current_path).to eq new_user_session_path
+  end
 end

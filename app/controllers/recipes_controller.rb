@@ -1,6 +1,8 @@
 class RecipesController < ApplicationController
-  before_action :recipe_type_all, only: %i[ new create edit ]
+  before_action :authenticate_user!, only: %i[ new create edit]
+  before_action :recipe_type_all, only: %i[ new create edit ] 
   before_action :cuisine_all, only: %i[ new create edit ]
+  
 
   def index
     @recipes = Recipe.all
@@ -30,7 +32,11 @@ class RecipesController < ApplicationController
   end
 
   def edit
-    @recipe = Recipe.find(params[:id])
+    if current_user.user_owner?(@recipe)
+      @recipe = Recipe.find(params[:id])
+    else
+     redirect_to root_path
+    end
   end
 
   def update
