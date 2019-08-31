@@ -20,7 +20,7 @@ class Api::V1::RecipesController < Api::V1::ApiController
 
 private
     def params_recipe
-        params.require(:recipe).permit(:title, :image_recipe, :recipe_type_id, :cuisine_id, :difficulty, :cook_time, :difficulty, :ingredients, :cook_method)
+        params.require(:recipe).permit(:title, :image_recipe, :recipe_type_id, :cuisine_id, :cook_time, :difficulty, :ingredients, :cook_method)
     end
 
 end
