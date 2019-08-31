@@ -43,7 +43,7 @@ feature 'Visitor visit homepage' do
                            cook_time: 50,
                            ingredients: 'Farinha, açucar, cenoura',
                            cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
-
+    
     another_recipe = Recipe.create!(title: 'Feijoada',
                                    recipe_type: another_recipe_type, user: user, 
                                    cuisine: cuisine, difficulty: 'Difícil',
@@ -53,6 +53,7 @@ feature 'Visitor visit homepage' do
 
     # simula a ação do usuário
     visit root_path
+    
 
     # expectativas do usuário após a ação
     expect(page).to have_content(recipe.title)
