@@ -7,8 +7,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
          
-  def user_owner?(recipe)
-    (recipe && self == recipe.user)
-  end
+  #def user_owner?(recipe)
+   # (recipe && self == recipe.user)
+  #end
   
 end

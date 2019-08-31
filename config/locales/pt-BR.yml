@@ -1,3 +1,6 @@
 pt-BR:
   hello: "Olá Mundo"
   recipe_send_by: "Receita de "
+  not_found_recipe: "Receita não encontrada"
+  not_found_recipe_type: "Tipo de receita não encontrada"
+  not_found_cuisine: "Tipo de cozinha não encontrada"

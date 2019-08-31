@@ -36,7 +36,7 @@ feature "User must be logged to edit a recipe" do
         expect(page).to have_css('p', text: 'Faça um bolo e uma cobertura de chocolate')
     end
 
-    scenario 'and fail if is not' do
+    scenario 'and cant add if is not logged' do
         recipe_type = RecipeType.create!(name: 'Sobremesa')
         RecipeType.create!(name: 'Entrada')
         cuisine = Cuisine.create!(cuisine_name: 'Brasileira')
@@ -54,7 +54,7 @@ feature "User must be logged to edit a recipe" do
         
 
         expect(page).not_to have_content('Editar')
-        #expect(current_page).to eq new_user_session_path
+        
     end
 
     scenario 'and not see button if is not his recipe' do
@@ -81,10 +81,10 @@ feature "User must be logged to edit a recipe" do
 
         expect(current_path).not_to include("Bolo de Cenoura")
         expect(page).not_to have_content('Editar')
-        #expect(current_page).to eq new_user_session_path
+        
     end
 
-    scenario 'and cant access the link directly' do
+    scenario 'and cant access the link directly for edit recipes' do
         recipe_type = RecipeType.create!(name: 'Sobremesa')
         cuisine = Cuisine.create!(cuisine_name: 'Brasileira')
     
@@ -118,12 +118,13 @@ feature "User must be logged to edit a recipe" do
         click_on "Iniciar sessão"
 
         fill_in "Email", with: user.email
-        fill_in "Password", with: '123456'
+        fill_in "Password", with: user.password
         click_on "Entrar"
+        #byebug
 
         visit edit_recipe_path(recipe)
 
-        #expect(current_path).to eq root_path
+       # expect(current_path).to eq root_paths
     end
 
 end
