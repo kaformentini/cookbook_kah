@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   namespace :api do 
     namespace :v1 do
-      resources :recipes, only: %i[show]
+      resources :recipes, only: %i[show create]
       resources :recipe_types, only: %i[create]
     end
   end
