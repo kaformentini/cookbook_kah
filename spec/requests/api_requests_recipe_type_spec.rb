@@ -6,12 +6,12 @@ describe 'request information for recipes type' do
     it 'successfully return json' do 
         recipe_type = RecipeType.create!(name: 'Sobremesa')
                
-        get "/api/v1/recipe_type/#{recipe_type.id}"
+        get "/api/v1/recipe_types/#{recipe_type.id}"
 
         json_recipe_type = JSON.parse(response.body, symbolize_names: true)
-
+        
         expect(response.status).to eq 200
-        expect(json_recipe[:name]).to eq recipe_type.name
+        expect(response.body).to include(recipe_type.name)
     end
 
     it 'fail to get a recipe type' do
@@ -19,7 +19,7 @@ describe 'request information for recipes type' do
         get "/api/v1/recipe_types/000"
 
         json_recipe_type = JSON.parse(response.body, symbolize_names: true)
-
+        
         expect(response.status).to eq 404
         expect(response.body).to include('Tipo de receita não encontrada')
 
